@@ -1,4 +1,4 @@
-from funcoes import criar_tabuleiro, printar_tabuleiro
+from Tabuleiro import Tabuleiro
 
-tabuleiro = criar_tabuleiro()
-printar_tabuleiro(tabuleiro)
+tabuleiro = Tabuleiro()
+tabuleiro.printarTabuleiro()
