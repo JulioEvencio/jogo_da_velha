@@ -25,3 +25,26 @@ class Tabuleiro:
             return _ERRO
         self.__tabuleiro[linha][coluna] = simbolo
         return _SUCESSO
+
+    def verificarGanhador(self, p1, p2):
+        #   Jogador 1
+        #   Linha
+        for i in range(3):
+            if(self.__tabuleiro[i][0] == p1 and self.__tabuleiro[i][1] == p1 and self.__tabuleiro[i][2] == p1): return 1
+        #   Coluna
+        for i in range(3):
+            if(self.__tabuleiro[0][i] == p1 and self.__tabuleiro[1][i] == p1 and self.__tabuleiro[2][i] == p1): return 1
+        #   Diagonal
+        if(self.__tabuleiro[0][0] == p1 and self.__tabuleiro[1][1] == p1 and self.__tabuleiro[2][2] == p1): return 1
+        if(self.__tabuleiro[2][0] == p1 and self.__tabuleiro[1][1] == p1 and self.__tabuleiro[0][2] == p1): return 1
+
+        #   Jogador 2
+        #   Linha
+        for i in range(3):
+            if(self.__tabuleiro[i][0] == p2 and self.__tabuleiro[i][1] == p2 and self.__tabuleiro[i][2] == p2): return 2
+        #   Coluna
+        for i in range(3):
+            if(self.__tabuleiro[0][i] == p2 and self.__tabuleiro[1][i] == p2 and self.__tabuleiro[2][i] == p2): return 2
+        #   Diagonal
+        if(self.__tabuleiro[0][0] == p2 and self.__tabuleiro[1][1] == p2 and self.__tabuleiro[2][2] == p2): return 2
+        if(self.__tabuleiro[2][0] == p2 and self.__tabuleiro[1][1] == p2 and self.__tabuleiro[0][2] == p2): return 2
