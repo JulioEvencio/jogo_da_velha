@@ -4,8 +4,8 @@ class Player:
     def __init__(self, nome, simbolo):
         self.__nome = nome
         self.simbolo = simbolo
-        self.linha = 0
-        self.coluna = 0
+        self.linha = _ERRO
+        self.coluna = _ERRO
 
     def __lerLinha(self):
         linha = input('Letra: ')
