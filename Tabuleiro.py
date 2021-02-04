@@ -23,10 +23,8 @@ class Tabuleiro:
 
     def fazerJogada(self, linha, coluna, simbolo):
         if(linha == _ERRO or coluna == _ERRO):
-            print('Posição inválida!')
             return _ERRO
         if(self.__tabuleiro[linha][coluna] != _VAZIO):
-            print('Posição inválida!')
             return _ERRO
         self.__tabuleiro[linha][coluna] = simbolo
         return _SUCESSO
