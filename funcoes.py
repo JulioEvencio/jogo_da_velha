@@ -1,6 +1,17 @@
 import os
-from Tabuleiro import Tabuleiro
 from Tabuleiro import _PLAYER_1_GANHOU, _PLAYER_2_GANHOU
+
+_OPCAO_SAIR = 0
+_OPCAO_JOGAR = 1
+_OPCAO_RANK = 2
+
+def menu():
+    print('--------MENU----------')
+    print('1. Jogar')
+    print('2. Rank')
+    print('0. Sair')
+    opcao = int(input('Opção: '))
+    return opcao
 
 def jogar(tabuleiro, j1, j2):
     vez = 1
@@ -34,6 +45,8 @@ def jogar(tabuleiro, j1, j2):
                 print('Jogador 1 ganhou!')
                 j1.vitoria += 1
                 j2.derrota += 1
+                print('---------------------------')
+                input('Pressione enter para continuar...')
                 break
             elif(vitoria == _PLAYER_2_GANHOU):
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -41,9 +54,13 @@ def jogar(tabuleiro, j1, j2):
                 print('jogador 2 ganhou!')
                 j2.vitoria += 1
                 j1.derrota += 1
+                print('---------------------------')
+                input('Pressione enter para continuar...')
                 break
             else:
                 print('Empate!')
                 j1.empate += 1
                 j2.empate += 1
+                print('---------------------------')
+                input('Pressione enter para continuar...')
                 break
