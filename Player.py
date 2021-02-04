@@ -2,7 +2,7 @@ _ERRO = -1
 
 class Player:
     def __init__(self, nome, simbolo):
-        self.__nome = nome
+        self.nome = nome
         self.simbolo = simbolo
         self.vitoria = 0
         self.derrota = 0
@@ -11,7 +11,7 @@ class Player:
         self.coluna = _ERRO
 
     def getPlayer(self):
-        print('Nome: {}'.format(self.__nome))
+        print('Nome: {}'.format(self.nome))
         print('Símbolo: {}'.format(self.simbolo))
         print('Vitórias: {}'.format(self.vitoria))
         print('Derrotas: {}'.format(self.derrota))
