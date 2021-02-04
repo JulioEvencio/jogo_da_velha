@@ -1,7 +1,7 @@
 import os
 from Tabuleiro import Tabuleiro
 from Player import Player
-from funcoes import jogar, menu, _OPCAO_SAIR, _OPCAO_JOGAR, _OPCAO_RANK
+from funcoes import jogar, menu, rank, _OPCAO_SAIR, _OPCAO_JOGAR, _OPCAO_RANK
 
 os.system('cls' if os.name == 'nt' else 'clear')
 tabuleiro = Tabuleiro()
@@ -23,7 +23,10 @@ while(loop):
     if(opcao == _OPCAO_JOGAR):
         jogar(tabuleiro, j1, j2)
     elif(opcao == _OPCAO_RANK):
-        print('Em breve!')
+        rank(j1, j2)
     elif(opcao == _OPCAO_SAIR):
         print('Obrigado por jogar!')
         loop = False
+    else:
+        print('Opção inválida!')
+        input('Pressione enter para continuar...')

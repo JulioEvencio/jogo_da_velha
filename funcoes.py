@@ -13,6 +13,15 @@ def menu():
     opcao = int(input('Opção: '))
     return opcao
 
+def rank(j1, j2):
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print('--------RANK----------')
+    j1.getPlayer()
+    print('---------------------------')
+    j2.getPlayer()
+    print('---------------------------')
+    input('Pressione enter para continuar...')
+
 def jogar(tabuleiro, j1, j2):
     vez = 1
     vitoria = 0
