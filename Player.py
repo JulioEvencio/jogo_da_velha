@@ -4,8 +4,18 @@ class Player:
     def __init__(self, nome, simbolo):
         self.__nome = nome
         self.simbolo = simbolo
+        self.vitoria = 0
+        self.derrota = 0
+        self.empate = 0
         self.linha = _ERRO
         self.coluna = _ERRO
+
+    def getPlayer(self):
+        print('Nome: {}'.format(self.__nome))
+        print('Símbolo: {}'.format(self.simbolo))
+        print('Vitórias: {}'.format(self.vitoria))
+        print('Derrotas: {}'.format(self.derrota))
+        print('Empates: {}'.format(self.empate))
 
     def __lerLinha(self):
         linha = input('Letra: ')
