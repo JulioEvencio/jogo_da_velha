@@ -1,9 +1,6 @@
 #include <stdlib.h>
 #include "tabuleiro.h"
 
-#define TABULEIRO_LINHA 3
-#define TABULEIRO_COLUNA 3
-
 int tabulerio_verificar_posicao_vazia(Tabuleiro **tabuleiro);
 
 struct Tabuleiro
@@ -17,12 +14,25 @@ int tabuleiro_criar(Tabuleiro **tabuleiro)
 
     if (*tabuleiro == NULL) return -1;
 
+    tabuleiro_resetar(tabuleiro);
+
     return 0;
 }
 
 void tabuleiro_liberar(Tabuleiro **tabuleiro)
 {
     free(*tabuleiro);
+}
+
+void tabuleiro_resetar(Tabuleiro **tabuleiro)
+{
+    for (int linha = 0; linha < TABULEIRO_LINHA; linha++)
+    {
+        for (int coluna = 0; coluna < TABULEIRO_COLUNA; coluna++)
+        {
+            (*tabuleiro)->tabuleiro[linha][coluna] = TABULERIO_EMPATE;
+        }
+    }
 }
 
 int tabulerio_fazer_jogada(Tabuleiro **tabuleiro, int linha, int coluna, char simbolo)
@@ -44,15 +54,15 @@ int tabulerio_verificar_posicao_vazia(Tabuleiro **tabuleiro)
         {
             if ((*tabuleiro)->tabuleiro[linha][coluna] == TABULERIO_EMPATE)
             {
-                return 0;
+                return 1;
             }
         }
     }
 
-    return 1;
+    return 0;
 }
 
-char tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
+int tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
 {
     /* Linha */
     for (int i = 0; i < TABULEIRO_LINHA; i++)
@@ -97,7 +107,7 @@ char tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
     return TABULEIRO_GAME_OVER;
 }
 
-char tabulerio_obter(Tabuleiro **tabuleiro, int linha, int coluna)
+char tabulerio_obter_simbolo(Tabuleiro **tabuleiro, int linha, int coluna)
 {
     return (*tabuleiro)->tabuleiro[linha][coluna];
 }

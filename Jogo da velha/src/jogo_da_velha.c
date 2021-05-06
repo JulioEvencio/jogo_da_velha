@@ -4,6 +4,11 @@
 
 int carregar_texturas(SDL_Renderer *tela, SDL_Texture **textura)
 {
+    char *textura_arquivo[TEXTURA_QUANTIDADE] = {
+        "../imagem/x.png",
+        "../imagem/circulo.png"
+    };
+
     SDL_Surface *imagem = NULL;
 
     for (int i = 0; i < TEXTURA_QUANTIDADE; i++)
