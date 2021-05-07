@@ -37,8 +37,8 @@ void tabuleiro_resetar(Tabuleiro **tabuleiro)
 
 int tabulerio_fazer_jogada(Tabuleiro **tabuleiro, int linha, int coluna, char simbolo)
 {
-    if (linha < 1 || linha > TABULEIRO_LINHA) return -1;
-    if (coluna < 1 || linha > TABULEIRO_COLUNA) return -1;
+    if (linha < 0 || linha >= TABULEIRO_LINHA) return -1;
+    if (coluna < 0 || linha >= TABULEIRO_COLUNA) return -1;
     if (simbolo == TABULERIO_EMPATE) return -1;
 
     (*tabuleiro)->tabuleiro[linha][coluna] = simbolo;

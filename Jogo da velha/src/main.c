@@ -2,10 +2,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "jogo_da_velha.h"
+#include "jogo/jogo.h"
 
 int main(int argc, char *argv[])
 {
     int loop = 1;
+
+    Jogo *jogo = NULL;
 
     SDL_Window *janela = NULL;
     SDL_Renderer *tela = NULL;
@@ -66,25 +69,35 @@ int main(int argc, char *argv[])
         SDL_Quit();
     }
 
+    if (jogo_criar(&jogo, textura))
+    {
+        liberar_texturas(textura);
+        SDL_DestroyRenderer(tela);
+        SDL_DestroyWindow(janela);
+        IMG_Quit();
+        SDL_Quit();
+    }
+
     while(loop)
     {
         while(SDL_PollEvent(&evento) != 0)
         {
             if (evento.type == SDL_QUIT) loop = 0;
 
-            /* Code */
+            jogo_evento(&jogo, &evento);
         }
 
         SDL_SetRenderDrawColor(tela, JANELA_COR);
         SDL_RenderClear(tela);
 
-        /* Code */
+        jogo_tela(&jogo, tela);
 
         SDL_RenderPresent(tela);
 
         SDL_Delay(JANELA_DELAY);
     }
 
+    jogo_liberar(&jogo);
     liberar_texturas(textura);
     SDL_DestroyRenderer(tela);
     SDL_DestroyWindow(janela);
