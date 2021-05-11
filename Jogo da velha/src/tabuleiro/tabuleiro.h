@@ -4,7 +4,7 @@
 #define TABULEIRO_LINHA 3
 #define TABULEIRO_COLUNA 3
 #define TABULEIRO_GAME_OVER 1
-#define TABULERIO_EMPATE '\0'
+#define TABULERIO_POSICAO_VAZIA '\0'
 
 typedef struct Tabuleiro Tabuleiro;
 

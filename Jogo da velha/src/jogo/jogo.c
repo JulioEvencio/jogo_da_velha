@@ -8,6 +8,8 @@
 #define JOGO_COR_PRETA 0, 0, 0, 255
 #define JOGO_VEZ_X 0
 #define JOGO_VEZ_O 1
+#define JOGO_JOGADOR_SIMBOLO 'x'
+#define JOGO_ADVERSARIO_SIMBOLO 'o'
 
 struct Jogo
 {
@@ -53,12 +55,12 @@ void jogo_tela(Jogo **jogo, SDL_Renderer *tela)
 
             SDL_Rect quadrado = {quadrado_x, quadrado_y, quadrado_largura, quadrado_altura};
 
-            if (tabulerio_obter_simbolo(&(*jogo)->tabuleiro, linha, coluna) == 'x')
+            if (tabulerio_obter_simbolo(&(*jogo)->tabuleiro, linha, coluna) == JOGO_JOGADOR_SIMBOLO)
             {
                 SDL_RenderCopy(tela, (*jogo)->jogador, NULL, &quadrado);
             }
 
-            if (tabulerio_obter_simbolo(&(*jogo)->tabuleiro, linha, coluna) == 'o')
+            if (tabulerio_obter_simbolo(&(*jogo)->tabuleiro, linha, coluna) == JOGO_ADVERSARIO_SIMBOLO)
             {
                 SDL_RenderCopy(tela, (*jogo)->adversario, NULL, &quadrado);
             }
@@ -78,12 +80,12 @@ void jogo_evento(Jogo **jogo, SDL_Event *evento)
 
         if ((*jogo)->vez == JOGO_VEZ_X)
         {
-            tabulerio_fazer_jogada(&(*jogo)->tabuleiro, mouse_linha, mouse_coluna, 'x');
+            tabulerio_fazer_jogada(&(*jogo)->tabuleiro, mouse_linha, mouse_coluna, JOGO_JOGADOR_SIMBOLO);
             (*jogo)->vez = JOGO_VEZ_O;
         }
         else
         {
-            tabulerio_fazer_jogada(&(*jogo)->tabuleiro, mouse_linha, mouse_coluna, 'o');
+            tabulerio_fazer_jogada(&(*jogo)->tabuleiro, mouse_linha, mouse_coluna, JOGO_ADVERSARIO_SIMBOLO);
             (*jogo)->vez = JOGO_VEZ_X;
         }
     }

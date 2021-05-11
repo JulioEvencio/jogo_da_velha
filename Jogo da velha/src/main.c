@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
         SDL_DestroyWindow(janela);
         IMG_Quit();
         SDL_Quit();
+        return 1;
     }
 
     if (jogo_criar(&jogo, textura))
@@ -76,6 +77,7 @@ int main(int argc, char *argv[])
         SDL_DestroyWindow(janela);
         IMG_Quit();
         SDL_Quit();
+        return 1;
     }
 
     while(loop)

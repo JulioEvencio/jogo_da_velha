@@ -30,16 +30,14 @@ void tabuleiro_resetar(Tabuleiro **tabuleiro)
     {
         for (int coluna = 0; coluna < TABULEIRO_COLUNA; coluna++)
         {
-            (*tabuleiro)->tabuleiro[linha][coluna] = TABULERIO_EMPATE;
+            (*tabuleiro)->tabuleiro[linha][coluna] = TABULERIO_POSICAO_VAZIA;
         }
     }
 }
 
 int tabulerio_fazer_jogada(Tabuleiro **tabuleiro, int linha, int coluna, char simbolo)
 {
-    if (linha < 0 || linha >= TABULEIRO_LINHA) return -1;
-    if (coluna < 0 || linha >= TABULEIRO_COLUNA) return -1;
-    if (simbolo == TABULERIO_EMPATE) return -1;
+    if ((*tabuleiro)->tabuleiro[linha][coluna] != TABULERIO_POSICAO_VAZIA) return -1;
 
     (*tabuleiro)->tabuleiro[linha][coluna] = simbolo;
 
@@ -52,7 +50,7 @@ int tabulerio_verificar_posicao_vazia(Tabuleiro **tabuleiro)
     {
         for (int coluna = 0; coluna < TABULEIRO_COLUNA; coluna++)
         {
-            if ((*tabuleiro)->tabuleiro[linha][coluna] == TABULERIO_EMPATE)
+            if ((*tabuleiro)->tabuleiro[linha][coluna] == TABULERIO_POSICAO_VAZIA)
             {
                 return 1;
             }
@@ -103,7 +101,7 @@ int tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
         return 0;
     }
 
-    *simbolo = TABULERIO_EMPATE;
+    *simbolo = TABULERIO_POSICAO_VAZIA;
     return TABULEIRO_GAME_OVER;
 }
 
