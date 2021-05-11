@@ -65,7 +65,7 @@ int tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
     /* Linha */
     for (int i = 0; i < TABULEIRO_LINHA; i++)
     {
-        if ((*tabuleiro)->tabuleiro[i][0] == (*tabuleiro)->tabuleiro[i][1] && (*tabuleiro)->tabuleiro[i][1] == (*tabuleiro)->tabuleiro[i][2])
+        if ((*tabuleiro)->tabuleiro[i][0] == (*tabuleiro)->tabuleiro[i][1] && (*tabuleiro)->tabuleiro[i][1] == (*tabuleiro)->tabuleiro[i][2] && (*tabuleiro)->tabuleiro[i][0] != TABULERIO_POSICAO_VAZIA)
         {
             *simbolo = (*tabuleiro)->tabuleiro[i][0];
             return TABULEIRO_GAME_OVER;
@@ -75,7 +75,7 @@ int tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
     /* Coluna */
     for (int i = 0; i < TABULEIRO_COLUNA; i++)
     {
-        if ((*tabuleiro)->tabuleiro[0][i] == (*tabuleiro)->tabuleiro[1][i] && (*tabuleiro)->tabuleiro[1][i] == (*tabuleiro)->tabuleiro[2][i])
+        if ((*tabuleiro)->tabuleiro[0][i] == (*tabuleiro)->tabuleiro[1][i] && (*tabuleiro)->tabuleiro[1][i] == (*tabuleiro)->tabuleiro[2][i] && (*tabuleiro)->tabuleiro[0][i] != TABULERIO_POSICAO_VAZIA)
         {
             *simbolo = (*tabuleiro)->tabuleiro[0][i];
             return TABULEIRO_GAME_OVER;
@@ -83,14 +83,14 @@ int tabuleiro_verificar_game_over(Tabuleiro **tabuleiro, char *simbolo)
     }
 
     /* Diagonal Principal */
-    if ((*tabuleiro)->tabuleiro[0][0] == (*tabuleiro)->tabuleiro[1][1] && (*tabuleiro)->tabuleiro[1][1] == (*tabuleiro)->tabuleiro[2][2])
+    if ((*tabuleiro)->tabuleiro[0][0] == (*tabuleiro)->tabuleiro[1][1] && (*tabuleiro)->tabuleiro[1][1] == (*tabuleiro)->tabuleiro[2][2] && (*tabuleiro)->tabuleiro[0][0] != TABULERIO_POSICAO_VAZIA)
     {
         *simbolo = (*tabuleiro)->tabuleiro[1][1];
         return TABULEIRO_GAME_OVER;
     }
 
     /* Diagonal Segundaria */
-    if ((*tabuleiro)->tabuleiro[2][0] == (*tabuleiro)->tabuleiro[1][1] && (*tabuleiro)->tabuleiro[1][1] == (*tabuleiro)->tabuleiro[0][2])
+    if ((*tabuleiro)->tabuleiro[2][0] == (*tabuleiro)->tabuleiro[1][1] && (*tabuleiro)->tabuleiro[1][1] == (*tabuleiro)->tabuleiro[0][2] && (*tabuleiro)->tabuleiro[2][0] != TABULERIO_POSICAO_VAZIA)
     {
         *simbolo = (*tabuleiro)->tabuleiro[1][1];
         return TABULEIRO_GAME_OVER;

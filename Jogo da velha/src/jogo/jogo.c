@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -45,6 +46,7 @@ void jogo_tela(Jogo **jogo, SDL_Renderer *tela)
     int quadrado_x, quadrado_y;
     int quadrado_largura = JANELA_LARGURA / TABULEIRO_COLUNA;
     int quadrado_altura = JANELA_ALTURA / TABULEIRO_LINHA;
+    char game_over;
 
     for (int linha = 0; linha < TABULEIRO_LINHA; linha++)
     {
@@ -68,6 +70,12 @@ void jogo_tela(Jogo **jogo, SDL_Renderer *tela)
             SDL_SetRenderDrawColor(tela, JOGO_COR_PRETA);
             SDL_RenderDrawRect(tela, &quadrado);
         }
+    }
+
+    if (tabuleiro_verificar_game_over(&(*jogo)->tabuleiro, &game_over))
+    {
+        puts("Game Over!");
+        printf("Ganhador: %c \n", game_over);
     }
 }
 
