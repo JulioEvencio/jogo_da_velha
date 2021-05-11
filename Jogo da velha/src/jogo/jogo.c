@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -74,8 +73,15 @@ void jogo_tela(Jogo **jogo, SDL_Renderer *tela)
 
     if (tabuleiro_verificar_game_over(&(*jogo)->tabuleiro, &game_over))
     {
-        puts("Game Over!");
-        printf("Ganhador: %c \n", game_over);
+        if (game_over == JOGO_JOGADOR_SIMBOLO)
+        {
+            SDL_ShowSimpleMessageBox(0, "Game Over", "Jogador com o simbolo X ganhou!", NULL);
+        }
+        else
+        {
+            SDL_ShowSimpleMessageBox(0, "Game Over", "Jogador com o simbolo O ganhou!", NULL);
+        }
+        tabuleiro_resetar(&(*jogo)->tabuleiro);
     }
 }
 
